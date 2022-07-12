@@ -19,7 +19,7 @@ describe("Obtém todos os produtos", () => {
   ];
 
   before(async () => {
-    await sinon.stub(connection, "execute").resolves([mockProduct]);
+    await sinon.stub(connection, 'execute').resolves([mockProduct]);
   });
 
   after(async () => {
@@ -28,7 +28,7 @@ describe("Obtém todos os produtos", () => {
 
   it("Retorna um array", async () => {
     const result = await modelProducts.getAll();
-    expect(result).to.be.a("array");
+    expect(result).to.be.a('array');
   });
 });
 
@@ -52,12 +52,12 @@ describe("Obtem o produto por ID", () => {
 
 describe("Insere um novo produto no Banco de Dados", () => {
   const insertProduct = {
-    name: "Produto1",
+    name: 'Produto1',
   };
 
   before(async () => {
     const execute = [{ insterId: 1 }];
-    sinon.stub(connection, "execute").resolves(execute);
+    sinon.stub(connection, 'execute').resolves(execute);
   });
 
   after(async () => {
@@ -67,12 +67,12 @@ describe("Insere um novo produto no Banco de Dados", () => {
 describe("Quando o produto foi inserido com sucesso", () => {
     it("Deve retornar um objeto", async () => {
       const response = await modelProducts.add(insertProduct);
-      expect(response).to.be.a("object");
+      expect(response).to.be.a('object');
     });
 
     it("Deve incrementar uma propriedade id automaticamente", async () => {
       const response = await modelProducts.add(insertProduct);
-      expect(response).to.have.a.property("id");
+      expect(response).to.have.a.property('id');
     });
   });
 });
